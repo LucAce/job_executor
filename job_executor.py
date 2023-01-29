@@ -39,7 +39,7 @@
 #   Options:
 #
 #       -h, --help      Show the help message then exit
-#       -jobs FILE      Use the Yaml FILE as the job items file
+#       --jobs FILE     Use the Yaml FILE as the job items file
 #
 #------------------------------------------------------------------------------
 
