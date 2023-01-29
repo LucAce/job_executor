@@ -166,7 +166,7 @@ class DataMap:
 
 
 #------------------------------------------------------------------------------
-# Settings Class
+# GlobalSettings Class
 #------------------------------------------------------------------------------
 class GlobalSettings:
 
@@ -175,10 +175,10 @@ class GlobalSettings:
     # JobItem object constructor.
     #--------------------------------------------------------------------------
     def __init__(self):
-        self.threads   = THREADS
+        self.threads = THREADS
         self.wall_time = WALL_TIME
-        self.strategy  = STRATEGY
-        self.priority  = PRIORITY
+        self.strategy = STRATEGY
+        self.priority = PRIORITY
 
     #--------------------------------------------------------------------------
     # Function: load
@@ -353,9 +353,9 @@ class JobsScheduler:
 
 
 #------------------------------------------------------------------------------
-# JobsScheduler Class
+# JobsExecutor Class
 #------------------------------------------------------------------------------
-class JobsExecuter:
+class JobsExecutor:
 
     #--------------------------------------------------------------------------
     # Function: execute
@@ -367,7 +367,7 @@ class JobsExecuter:
     #--------------------------------------------------------------------------
     @classmethod
     def execute(cls, job_items, num_threads):
-        cls = JobsExecuter()
+        cls = JobsExecutor()
         thread_list = []
 
         # Execute job items
@@ -378,12 +378,14 @@ class JobsExecuter:
                 # Get the number of running threads
                 running_threads = 0
                 for x in thread_list:
+                    # Thread is alive
                     if x.is_alive():
                         running_threads += 1
 
-                # Breakout if running threads below threshold
+                # Running threads is below threshold
                 if (running_threads < num_threads):
                     break
+                # Running threads at threshold
                 else:
                     time.sleep(0.25)
 
@@ -493,7 +495,7 @@ def main():
         sys.exit(1)
 
     #--------------------------------------------------------------------------
-    # Execute Script
+    # Execute Jobs
     #--------------------------------------------------------------------------
 
     # Parse the YAML jobs file
@@ -520,11 +522,11 @@ def main():
 
     # Execute Job Items
     print ("\nPre Job Items:")
-    JobsExecuter.execute(pre_job_items, 1)
+    JobsExecutor.execute(pre_job_items, 1)
     print ("\nJob Items:")
-    JobsExecuter.execute(job_items, settings.threads)
+    JobsExecutor.execute(job_items, settings.threads)
     print ("\nPost Job Items:")
-    JobsExecuter.execute(post_job_items, 1)
+    JobsExecutor.execute(post_job_items, 1)
     return
 
 
