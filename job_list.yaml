@@ -57,7 +57,7 @@ pre_job_items:
 # Job Items
 #------------------------------------------------------------------------------
 #
-# Tasks that will be exeucuted in parallel.  A typical example would be to run
+# Tasks that will be executed in parallel.  A typical example would be to run
 # multiple tests in parallel.  The number of job items executed in parallel is
 # defined by the threads attribute.
 #
