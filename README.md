@@ -17,21 +17,21 @@ Options:
 
 ```yaml
 global:
-  # Maximum number of job items that will be run in parallel
+  # Maximum number of job items that will be run in parallel.
   threads: 4
 
-  # Default maximum wall time of a job item.  Individual job items specifying 
-  # a wall will override the default maximum wall time.  Can be an integer 
-  # which represents seconds or in HH:MM:SS format.
+  # Default maximum wall time of a job item.  Individual job items specifying
+  # a wall time will override the default maximum wall time.  Can be an
+  # integer which represents seconds or in HH:MM:SS format.
   wall_time: 12:00:00
 
   # Methodology used to schedule the job items.  Pre and Post items are
   # always executed in sequential order.
   #
   # Strategies:
-  # - priority: Schedule based on the job items priority.
-  # - wall_time: Schedule based on the job items wall time. Job Items with
-  #              higher wall times will be executed first.
+  # - priority:   Schedule based on the job items priority.
+  # - wall_time:  Schedule based on the job items wall time.  Job Items
+  #               with higher wall times will be executed first.
   # - sequential: Schedule based on the job items sequential order.
   strategy: priority
 

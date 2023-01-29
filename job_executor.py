@@ -118,7 +118,7 @@ class JobItem:
 
     #--------------------------------------------------------------------------
     # Function: convert2string
-    # Convert object attributes to a string.
+    # Convert an object's attributes to a string.
     #
     # Returns:
     # string - String represenation of the job item
@@ -150,8 +150,8 @@ class DataMap:
     # yaml_file - Yaml job items file path.
     #
     # Returns:
-    # Object - Returns a multi-dimensional dictionary that represents the
-    #          job items yaml file.
+    # object - Multi-dimensional dictionary that represents the job items
+    #          yaml file.
     #--------------------------------------------------------------------------
     @staticmethod
     def load_yaml(yaml_file):
@@ -181,11 +181,14 @@ class GlobalSettings:
         self.priority  = PRIORITY
 
     #--------------------------------------------------------------------------
-    # Function: parse
-    # Parse the global attributes from the Yaml data object map.
+    # Function: load
+    # Load the global attributes from the Yaml data object map.
     #
     # Parameters:
     # data_map - Yaml data object map.
+    #
+    # Returns:
+    # object - Settings object
     #--------------------------------------------------------------------------
     @classmethod
     def load(cls, data_map):
@@ -218,7 +221,7 @@ class JobsParser:
     # settings - Optional GlobalSettings object
     #
     # Returns:
-    # Job Items - Job items of the provided job type
+    # list - A list of job items of the provided job type
     #--------------------------------------------------------------------------
     @staticmethod
     def parse(data_map, job_type, settings=None):
@@ -226,7 +229,7 @@ class JobsParser:
         job_item = None
         index = 0
 
-        # Create a setting class if one not provided
+        # Create a setting class if one is not provided
         if settings is None:
             settings = GlobalSettings()
 
@@ -312,7 +315,7 @@ class JobsScheduler:
 
     #--------------------------------------------------------------------------
     # Function: priority_schedule
-    # Reorder job items list based on priority scheduling.
+    # Reorder job items list based on priority.
     #
     # Parameters:
     # job_items - List of job items
@@ -331,7 +334,7 @@ class JobsScheduler:
 
     #--------------------------------------------------------------------------
     # Function: wall_time_schedule
-    # Reorder job items list based on wall time scheduling.
+    # Reorder job items list based on wall times.
     #
     # Parameters:
     # job_items - List of job items

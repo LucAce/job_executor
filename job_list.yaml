@@ -2,21 +2,21 @@
 # Global Settings
 #------------------------------------------------------------------------------
 global:
-  # Maximum number of job items that will be run in parallel
+  # Maximum number of job items that will be run in parallel.
   threads: 4
 
   # Default maximum wall time of a job item.  Individual job items specifying
-  # a wall will override the default maximum wall time.  Can be an integer
-  # which represents seconds or in HH:MM:SS format.
+  # a wall time will override the default maximum wall time.  Can be an
+  # integer which represents seconds or in HH:MM:SS format.
   wall_time: 12:00:00
 
   # Methodology used to schedule the job items.  Pre and Post items are
   # always executed in sequential order.
   #
   # Strategies:
-  # - priority: Schedule based on the job items priority.
-  # - wall_time: Schedule based on the job items wall time. Job Items with
-  #              higher wall times will be executed first.
+  # - priority:   Schedule based on the job items priority.
+  # - wall_time:  Schedule based on the job items wall time.  Job Items
+  #               with higher wall times will be executed first.
   # - sequential: Schedule based on the job items sequential order.
   strategy: priority
 
@@ -29,10 +29,8 @@ global:
 # Pre Job Items
 #------------------------------------------------------------------------------
 #
-# Task that are required to be executed before the job items.  A typical
+# Tasks that are required to be executed before the job items.  A typical
 # example would be to setup the environment or compile code.
-#
-# Example Implemenation:
 #
 # pre_job_items:                    # [REQUIRED] Pre-job section name
 # - job: PRE_JOB_ITEM_NAME          # [REQUIRED] Unique pre-job item name
@@ -54,15 +52,14 @@ pre_job_items:
 - {job: pre_job_item1, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, command: sleep 60}
 - {job: pre_job_item2, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, command: sleep 60}
 
+
 #------------------------------------------------------------------------------
 # Job Items
 #------------------------------------------------------------------------------
 #
 # Tasks that will be exeucuted in parallel.  A typical example would be to run
 # multiple tests in parallel.  The number of job items executed in parallel is
-# defined by the max_threads setting.
-#
-# Example Implemenation:
+# defined by the threads attribute.
 #
 # job_items:                        # [REQUIRED] Job section name
 # - job: JOB_ITEM_NAME              # [REQUIRED] Unique job item name
@@ -99,10 +96,8 @@ job_items:
 # Post Job Items
 #------------------------------------------------------------------------------
 #
-# Task that are required to be executed after all job items have completed.  A
-# typical example would to remove temporary files.
-#
-# Example Implemenation:
+# Tasks that are required to be executed after all job items have completed.
+# A typical example would to remove temporary files or process results.
 #
 # post_job_items:                   # [REQUIRED] Post-job section name
 # - job: POST_JOB_ITEM_NAME         # [REQUIRED] Unique post-job item name
