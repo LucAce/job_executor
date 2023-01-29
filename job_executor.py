@@ -79,7 +79,7 @@ WALL_TIME = 86400
 STRATEGY = "priority"
 
 # Default priority when using priority scheduling strategy.
-# Field ignored when using wall_time scheduling strategy.
+# Field ignored when using wall_time or sequential scheduling strategies.
 PRIORITY = 100
 
 
