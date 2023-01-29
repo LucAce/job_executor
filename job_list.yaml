@@ -1,0 +1,125 @@
+#------------------------------------------------------------------------------
+# Global Settings
+#------------------------------------------------------------------------------
+global:
+  # Maximum number of job items that will be run in parallel
+  threads: 4
+
+  # Default maximum wall time of a job item.  Wall times by a job item will
+  # override this value.is overwritten.  Can be an integer which represents
+  # seconds or in HH:MM:SS format.
+  wall_time: 12:00:00
+
+  # Methodology used to schedule the job items.  Pre and Post items are
+  # always executed in sequential order.
+  #
+  # Strategies:
+  # - priority: Schedule based on the job items priority.
+  # - wall_time: Schedule based on the job items wall time. Job Items with
+  #              higher wall times will be executed first.
+  # - sequential: Schedule based on the job items sequential order.
+  strategy: priority
+
+  # Default priority when using priority scheduling strategy.
+  # Field ignored when using wall_time or index scheduling strategies.
+  priority: 100
+
+
+#------------------------------------------------------------------------------
+# Pre Job Items
+#------------------------------------------------------------------------------
+#
+# Task that are required to be executed before the job items.  A typical
+# example would be to setup the environment or compile code.
+#
+# Example Implemenation:
+#
+# pre_job_items:                    # [REQUIRED] Pre-job section name
+# - job: PRE_JOB_ITEM_NAME          # [REQUIRED] Unique pre-job item name
+#                                   # Example: pre_job_item1
+#   command: COMMAND                # [REQUIRED] Command to execute
+#                                   # Example: sleep 60
+#   wall_time: HH:MM:SS             # [OPTIONAL] Maximum Wall Time
+#                                   # Default: Global wall_time
+#                                   # Example: (1 hour): 01:00:00
+#   stdout: FILE                    # [OPTIONAL] Standard Output File
+#                                   # Default: ./PRE_JOB_ITEM_NAME.out
+#                                   # Example: /dev/null
+#   stderr: FILE                    # [OPTIONAL] Standard Error File
+#                                   # Default: ./PRE_JOB_ITEM_NAME.err
+#                                   # Example: /dev/null
+#
+#------------------------------------------------------------------------------
+pre_job_items:
+- {job: pre_job_item1, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, command: sleep 60}
+- {job: pre_job_item2, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, command: sleep 60}
+
+#------------------------------------------------------------------------------
+# Job Items
+#------------------------------------------------------------------------------
+#
+# Tasks that will be exeucuted in parallel.  A typical example would be to run
+# multiple tests in parallel.  The number of job items executed in parallel is
+# defined by the max_threads setting.
+#
+# Example Implemenation:
+#
+# job_items:                        # [REQUIRED] Job section name
+# - job: JOB_ITEM_NAME              # [REQUIRED] Unique job item name
+#                                   # Example: job_item1
+#   command: COMMAND                # [REQUIRED] Command to execute
+#                                   # Example: sleep 60
+#   wall_time: HH:MM:SS             # [OPTIONAL] Maximum Wall Time
+#                                   # Default: Global wall_time
+#                                   # Example: (1 hour): 01:00:00
+#   priority: NUMBER                # [OPTIONAL] Job item priority
+#                                   # Default: Global base_priority
+#   stdout: FILE                    # [OPTIONAL] Standard Output File
+#                                   # Default: ./JOB_ITEM_NAME.out
+#                                   # Example: /dev/null
+#   stderr: FILE                    # [OPTIONAL] Standard Error File
+#                                   # Default: ./JOB_ITEM_NAME.err
+#                                   # Example: /dev/null
+#
+#------------------------------------------------------------------------------
+job_items:
+- {job: job_item1,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 100, command: sleep 60}
+- {job: job_item2,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 102, command: sleep 60}
+- {job: job_item3,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 104, command: sleep 60}
+- {job: job_item4,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 106, command: sleep 60}
+- {job: job_item5,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 108, command: sleep 60}
+- {job: job_item6,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 101, command: sleep 60}
+- {job: job_item7,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 103, command: sleep 60}
+- {job: job_item8,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 105, command: sleep 60}
+- {job: job_item9,  wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 107, command: sleep 60}
+- {job: job_item10, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, priority: 109, command: sleep 60}
+
+
+#------------------------------------------------------------------------------
+# Post Job Items
+#------------------------------------------------------------------------------
+#
+# Task that are required to be executed after all job items have completed.  A
+# typical example would to remove temporary files.
+#
+# Example Implemenation:
+#
+# post_job_items:                   # [REQUIRED] Post-job section name
+# - job: POST_JOB_ITEM_NAME         # [REQUIRED] Unique post-job item name
+#                                   # Example: post_job_item1
+#   command: COMMAND                # [REQUIRED] Command to execute
+#                                   # Example: sleep 60
+#   wall_time: HH:MM:SS             # [OPTIONAL] Maximum Wall Time
+#                                   # Default: Global wall_time
+#                                   # Example: (1 hour): 01:00:00
+#   stdout: FILE                    # [OPTIONAL] Standard Output File
+#                                   # Default: ./POST_JOB_ITEM_NAME.out
+#                                   # Example: /dev/null
+#   stderr: FILE                    # [OPTIONAL] Standard Error File
+#                                   # Default: ./POST_JOB_ITEM_NAME.err
+#                                   # Example: /dev/null
+#
+#------------------------------------------------------------------------------
+post_job_items:
+- {job: post_job_item1, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, command: sleep 60}
+- {job: post_job_item2, wall_time: 01:00:00, stdout: /dev/null, stderr: /dev/null, command: sleep 60}
