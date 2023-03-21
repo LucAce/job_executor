@@ -172,7 +172,7 @@ class GlobalSettings:
 
     #--------------------------------------------------------------------------
     # Function: __init__
-    # JobItem object constructor.
+    # GlobalSettings object constructor.
     #--------------------------------------------------------------------------
     def __init__(self):
         self.threads = THREADS
