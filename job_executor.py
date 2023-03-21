@@ -134,9 +134,10 @@ class JobItem:
         msg += "  stderr:     %s\n"  % self.stderr
         msg += "  Job State:  %s\n"  % self.job_state
         msg += "  Exit Code:  %s\n"  % self.exit_code
-        msg += "  Start Time: %s\n"  % self.start_time
-        msg += "  End Time:   %s\n"  % self.end_time
-        msg += "  Run Time:   %s\n"  % (self.end_time - self.start_time)
+        if self.start_time:
+            msg += "  Start Time: %s\n"  % self.start_time
+        if self.end_time:
+            msg += "  End Time:   %s\n"  % self.end_time
         return msg
 
 
