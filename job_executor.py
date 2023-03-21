@@ -117,23 +117,26 @@ class JobItem:
         self.end_time = None
 
     #--------------------------------------------------------------------------
-    # Function: convert2string
+    # Function: __str__
     # Convert an object's attributes to a string.
     #
     # Returns:
     # string - String represenation of the job item
     #--------------------------------------------------------------------------
-    def convert2string(self):
+    def __str__(self):
         msg =  "Job Item:\n"
-        msg += "  Name:      %s\n"  % self.name
-        msg += "  Index:     %1d\n" % self.index
-        msg += "  Command:   %s\n"  % self.command
-        msg += "  Priority:  %1d\n" % self.priority
-        msg += "  Wall Time: %s\n"  % self.wall_time
-        msg += "  stdout:    %s\n"  % self.stdout
-        msg += "  stderr:    %s\n"  % self.stderr
-        msg += "  Exit Code: %s\n"  % self.exit_code
-        msg += "  Job State: %s\n"  % self.job_state
+        msg += "  Name:       %s\n"  % self.name
+        msg += "  Index:      %1d\n" % self.index
+        msg += "  Command:    %s\n"  % self.command
+        msg += "  Priority:   %1d\n" % self.priority
+        msg += "  Wall Time:  %s\n"  % self.wall_time
+        msg += "  stdout:     %s\n"  % self.stdout
+        msg += "  stderr:     %s\n"  % self.stderr
+        msg += "  Job State:  %s\n"  % self.job_state
+        msg += "  Exit Code:  %s\n"  % self.exit_code
+        msg += "  Start Time: %s\n"  % self.start_time
+        msg += "  End Time:   %s\n"  % self.end_time
+        msg += "  Run Time:   %s\n"  % (self.end_time - self.start_time)
         return msg
 
 
