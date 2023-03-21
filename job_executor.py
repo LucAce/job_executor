@@ -127,9 +127,9 @@ class JobItem:
         msg =  "Job Item:\n"
         msg += "  Name:       %s\n"  % self.name
         msg += "  Index:      %1d\n" % self.index
-        msg += "  Command:    %s\n"  % self.command
         msg += "  Priority:   %1d\n" % self.priority
         msg += "  Wall Time:  %s\n"  % self.wall_time
+        msg += "  Command:    %s\n"  % self.command
         msg += "  stdout:     %s\n"  % self.stdout
         msg += "  stderr:     %s\n"  % self.stderr
         msg += "  Job State:  %s\n"  % self.job_state
